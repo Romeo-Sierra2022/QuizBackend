@@ -9,29 +9,30 @@ app.use(urlencoded({ extended: true }));
 
 app.post("connect", async (req, res) => {
     console.log("connect Endpoint Invoked");
-    const tableName = req.body.tableName;
-    const region = req.body.region;
-    const connectionId = req.body.connectionId;
+    res.sendStatus(200);
+    // const tableName = req.body.tableName;
+    // const region = req.body.region;
+    // const connectionId = req.body.connectionId;
 
-    console.log("tableName: ", tableName);
-    console.log("region: ", region);
-    console.log("connectionId: ", connectionId);
+    // console.log("tableName: ", tableName);
+    // console.log("region: ", region);
+    // console.log("connectionId: ", connectionId);
 
-    const ddb = new AWS.DynamoDB.DocumentClient({
-        apiVersion: "2012-08-10",
-        region,
-    });
-    const putParams = {
-        TableName: tableName,
-        Item: { connectionId },
-    };
-    try {
-        await ddb.put(putParams).promise();
-        console.info(`User ${connectionId} has joined`);
-        res.sendStatus(200);
-    } catch (err) {
-        console.error({ result: "Failed to connect", error: err });
-    }
+    // const ddb = new AWS.DynamoDB.DocumentClient({
+    //     apiVersion: "2012-08-10",
+    //     region,
+    // });
+    // const putParams = {
+    //     TableName: tableName,
+    //     Item: { connectionId },
+    // };
+    // try {
+    //     await ddb.put(putParams).promise();
+    //     console.info(`User ${connectionId} has joined`);
+    //     res.sendStatus(200);
+    // } catch (err) {
+    //     console.error({ result: "Failed to connect", error: err });
+    // }
 });
 
 app.post("delete", async (req, res) => {
